@@ -22,3 +22,12 @@ export const getLinkByName = async (name: string): Promise<Link> => {
     throw new Error("Failed to get the link");
   }
 };
+
+export const getLinks = async (): Promise<Link[]> => {
+  try {
+    const response = await db.select().from(LinksTable);
+    return response;
+  } catch {
+    throw new Error("Failed to get the links list");
+  }
+};
